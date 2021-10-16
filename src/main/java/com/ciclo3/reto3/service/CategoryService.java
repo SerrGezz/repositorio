@@ -1,6 +1,7 @@
 package com.ciclo3.reto3.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +15,24 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public void save(Category category) {
-		categoryRepository.save(category);
+	public List<Category> getAll(){
+		return categoryRepository.getAll();
 	}
 	
-	public void update(Category category) {
-		categoryRepository.save(category);
+	public Optional<Category> getCategory(int id){
+		return categoryRepository.getCategory(id);
 	}
 	
-	public void delete(Integer id) {
-		categoryRepository.deleteById(id);
-	}
-	
-	public List<Category> viewAll(){
-			return categoryRepository.findAll();
-	}
+	public Category save(Category category) {
+		if(category.getId()==null) {
+			return categoryRepository.save(category);
+		}else {
+			Optional<Category> categoryOptional=categoryRepository.getCategory(category.getId());
+			if(categoryOptional.isEmpty()) {
+				return categoryRepository.save(category);
+			}else {
+				return category;
+			}
+		}
+	}	
 }

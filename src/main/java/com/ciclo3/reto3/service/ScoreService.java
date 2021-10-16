@@ -1,6 +1,7 @@
 package com.ciclo3.reto3.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +15,24 @@ public class ScoreService {
 	@Autowired
 	private ScoreRepository scoreRepository;
 	
-	public void save(Score score) {
-		scoreRepository.save(score);
+	public List<Score> getAll(){
+		return scoreRepository.getAll();
 	}
 	
-	public void update(Score score) {
-		scoreRepository.save(score);
+	public Optional<Score> getScore(int id){
+		return scoreRepository.getScore(id);
 	}
 	
-	public void delete(Integer id) {
-		scoreRepository.deleteById(id);
-	}
-	
-	public List<Score> viewAll(){
-			return scoreRepository.findAll();
+	public Score save(Score score) {
+		if(score.getIdScore()==null) {
+			return scoreRepository.save(score);
+		}else {
+			Optional<Score> scoreOptional=scoreRepository.getScore(score.getIdScore());
+			if(scoreOptional.isEmpty()) {
+				return scoreRepository.save(score);
+			}else {
+				return score;
+			}
+		}
 	}
 }
