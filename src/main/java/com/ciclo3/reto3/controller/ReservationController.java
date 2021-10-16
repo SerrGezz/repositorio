@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.Reservation;
 import com.ciclo3.reto3.service.ReservationService;
 
 @RestController
-@RequestMapping("api/Reservation")
+@RequestMapping("/api/Reservation")
 public class ReservationController {
 	
 	ReservationService rest = new ReservationService();

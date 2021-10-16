@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.Category;
 import com.ciclo3.reto3.service.CategoryService;
 
 @RestController
-@RequestMapping("api/Category")
+@RequestMapping("/api/Category")
 public class CategoryController {
 		@Autowired
 		private CategoryService categoryService;

@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.Score;
 import com.ciclo3.reto3.service.ScoreService;
 
 @RestController
-@RequestMapping("api/Score")
+@RequestMapping("/api/Score")
 public class ScoreController {
 	
 	@Autowired
@@ -37,7 +37,7 @@ public class ScoreController {
 		scoreService.update(score);
 	}
 	
-	@DeleteMapping("delete/{idScore}")
+	@DeleteMapping("/delete/{idScore}")
 	public void deleteScore(@PathVariable("idScore") Integer id) {
 		scoreService.delete(id);
 	} 

@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.UAdmin;
 import com.ciclo3.reto3.service.UAdminService;
 
 @RestController
-@RequestMapping("api/UAdmin")
+@RequestMapping("/api/UAdmin")
 public class UAdminController {
 
 	@Autowired
@@ -37,7 +37,7 @@ public class UAdminController {
 		uAdminService.update(uAdmin);
 	}
 	
-	@DeleteMapping("delete/{idUAdmin}")
+	@DeleteMapping("/delete/{idUAdmin}")
 	public void deleteUAdmin(@PathVariable("idUAdmin") Integer id) {
 		uAdminService.delete(id);
 	} 

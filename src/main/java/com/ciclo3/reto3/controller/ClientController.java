@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.Client;
 import com.ciclo3.reto3.service.ClientService;
 
 @RestController
-@RequestMapping("api/Client")
+@RequestMapping("/api/Client")
 public class ClientController {
 	@Autowired
 	private ClientService clientService;

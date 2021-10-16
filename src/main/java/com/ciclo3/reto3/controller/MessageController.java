@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.Message;
 import com.ciclo3.reto3.service.MessageService;
 
 @RestController
-@RequestMapping("api/Message")
+@RequestMapping("/api/Message")
 public class MessageController {
 	@Autowired
 	private MessageService messageService;

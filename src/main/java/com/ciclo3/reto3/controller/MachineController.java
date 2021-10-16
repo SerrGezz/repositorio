@@ -16,7 +16,7 @@ import com.ciclo3.reto3.model.Machine;
 import com.ciclo3.reto3.service.MachineService;
 
 @RestController
-@RequestMapping("api/Machine")
+@RequestMapping("/api/Machine")
 public class MachineController {
 	@Autowired
 	private MachineService machineService;
