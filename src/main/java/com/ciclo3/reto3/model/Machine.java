@@ -1,6 +1,5 @@
 package com.ciclo3.reto3.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="machine")
-public class Machine implements Serializable{
+public class Machine{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -107,8 +106,6 @@ public class Machine implements Serializable{
 
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
-	}
-
-	
+	}	
 	
 }
