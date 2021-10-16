@@ -1,7 +1,7 @@
 package com.ciclo3.reto3.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.lang.annotation.Repeatable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -22,11 +23,11 @@ public class Reservation implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonIgnoreProperties("creationDate")
 	private Integer idReservation;
 	private Date startDate;
 	private Date devolutionDate;
 	private String status = "Created";
+	Message message;
 	
 	@ManyToOne
 	@JoinColumn(name = "machine")

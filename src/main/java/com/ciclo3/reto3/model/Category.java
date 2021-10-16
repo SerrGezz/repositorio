@@ -62,8 +62,6 @@ public class Category implements Serializable{
 
 	public void setMachines(List<Machine> machines) {
 		this.machines = machines;
-	}
-	
-	
+	}	
 	 
 }

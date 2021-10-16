@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
@@ -35,7 +36,7 @@ public class Machine implements Serializable{
 	private Category category;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
-	@JsonIgnoreProperties("machine")
+	@JsonIgnoreProperties({"machine","client"})
 	public List<Message> messages;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
