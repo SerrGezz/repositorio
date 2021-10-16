@@ -26,7 +26,6 @@ public class Reservation implements Serializable{
 	private Integer idReservation;
 	private Date startDate;
 	private Date devolutionDate;
-	private LocalDateTime creationDate = LocalDateTime.now();
 	private String status = "Created";
 	
 	@ManyToOne
@@ -69,15 +68,6 @@ public class Reservation implements Serializable{
 	public void setDevolutionDate(Date devolutionDate) {
 		this.devolutionDate = devolutionDate;
 	}
-
-	public LocalDateTime getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
-	}
-
 	public String getStatus() {
 		return status;
 	}
