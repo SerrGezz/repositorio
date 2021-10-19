@@ -58,13 +58,14 @@ public class ClientService {
 				if(client.getReservations()!=null) {
 					e.get().setReservations(client.getReservations());
 				}
+				clientRepository.save(e.get());
 				return e.get();
 			}else {
 				return client;
 			}
 		}else {
 			return client;
-		}
+		}	
 	}
 	
 	public boolean delete(int id) {
