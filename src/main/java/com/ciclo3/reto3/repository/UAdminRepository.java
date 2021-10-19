@@ -27,4 +27,7 @@ public class UAdminRepository {
 		return uAdminCrudRepository.save(uAdmin);
 	}
 
+	public void delete(UAdmin uAdmin) {
+		uAdminCrudRepository.delete(uAdmin);
+	}
 }
