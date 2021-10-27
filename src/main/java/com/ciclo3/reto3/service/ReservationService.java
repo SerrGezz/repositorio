@@ -1,5 +1,8 @@
 package com.ciclo3.reto3.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ciclo3.reto3.model.Reservation;
+import com.ciclo3.reto3.model.custom.CountClient;
+import com.ciclo3.reto3.model.custom.StatusAmount;
 import com.ciclo3.reto3.repository.ReservationRepository;
 
 
@@ -74,5 +79,34 @@ public class ReservationService {
 			return true;
 		}).orElse(false);
 		return bool;
+	}
+	
+	public List<CountClient> getTopClients(){
+		return reservationRepository.getTopClients();
+	}
+	
+	public StatusAmount getStatusReport() { 
+		List<Reservation> completed=reservationRepository.getReservationsByStatus("completed");
+		List<Reservation> cancelled=reservationRepository.getReservationsByStatus("cancelled");
+		
+		StatusAmount staAm = new StatusAmount(completed.size(), cancelled.size());
+		return staAm;
+	}
+	
+	public List<Reservation> getReservationPeriod(String d1, String d2){
+		
+		SimpleDateFormat parser=new SimpleDateFormat("yyyy-MM-dd");
+		Date dOne = new Date();
+		Date dTwo = new Date();
+		try {
+			dOne = parser.parse(d1);
+			dTwo = parser.parse(d2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(dOne.before(dTwo)) {
+			return reservationRepository.getReservationPeriod(dOne, dTwo);
+		}
+		return new ArrayList<>();
 	}
 }
